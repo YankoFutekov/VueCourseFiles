@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="vue.js"></script>
+    <title>Vue</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <p v-if="show">Now you can see me!</p>
+      <p v-else>Now you can see me aswell!</p>
+      <template v-if="show">
+        <p>Im from the template!</p>
+      </template>
+      <p>Now you can't see me, you blind summabitch!</p>
+      <button @click="show = !show">WADAP</button>
+      <hr />
+      <ul>
+        <li v-for="(ingredient, i) in ingredients" :key="ingredient">
+          {{ ingredient }} and here's the index is {{ i }}
+        </li>
+      </ul>
+      <button @click="ingredients.push('Blueberry')">ADD STUFF</button>
+      <hr />
+      <ul>
+        <li v-for="person in persons">
+          {{ person.name }} and here's the age {{ person.age }}
+        </li>
+        <hr />
+        <li v-for="person in persons">
+          <div v-for="(value, key, index) in person">
+            {{ key }} : {{ value }} : ({{ index }})
+          </div>
+        </li>
+      </ul>
+      <hr />
+      <span v-for="n in 10">{{ n }}</span>
+      <hr />
+      <template v-for="(ingredient, i) in ingredients">
+        <h1>{{ ingredient }}</h1>
+        <p>{{ i }}</p>
+      </template>
+      <hr />
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          show: true,
+          ingredients: ["Apple", "Orange", "Banana"],
+          persons: [
+            { name: "PowerMax", age: 26, color: "Yellow" },
+            { name: "September", age: "INFINITE", color: "Orange" }
+          ]
+        },
+        methods: {}
+      });
+    </script>
+    <style></style>
+  </body>
+</html>
